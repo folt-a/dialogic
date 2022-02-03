@@ -1,3 +1,86 @@
+# Dialogic ルビ機能追加
+
+このリポジトリは、Godotの高機能会話ウィンドウアドオン [**Dialogic**](https://github.com/coppolaemilio/dialogic/)をフォークし、ルビ機能を追加したものです。
+
+**注意：現在の Dialogic は1.4 Dev版です。1.4リリースまでは定期的にDialogic本リポジトリからPullして確認します。**
+
+## 事前準備
+
+DialogicとGodotの初期フォントは日本語が含まれていないため、日本語が表示できません。日本語フォントを別途用意してください。<br>
+[Google Fonts](https://fonts.google.com/?subset=japanese)とかいっぱいあっておすすめです。ゲーム組み込みもだいたいOKのはずです。（使う時はしっかり確認してください）
+
+## ルビ機能使い方
+
+1. Dialogic を addons ディレクトリに配置します。<br>プロジェクト設定→プラグインから Dialogic を有効化します。<br>その後プロジェクトを再起動してアドオンを反映させます。
+2. 上部に **Dialogic** タブが追加されています。開きます。  
+![image](https://user-images.githubusercontent.com/32963227/152312398-48a0e347-d33f-4db1-b04b-60c854aa2160.png)
+3. 左部のサイドバーの **Theme → Default Theme** を選択します。  
+**Dialog Text** タブの最左列に、**Ruby Font, Ruby Alignment, Ruby Offset** が追加されています。
+![image](https://user-images.githubusercontent.com/32963227/152312824-65ce8e5c-5381-41ef-ab12-144c965c8a1b.png)
+
+|   |初期値|説明|
+|---|---|---|
+|Ruby Font|res://addons/dialogic/Example Assets/Fonts/DefaultRubyFont.tres<br>FontDataのOverlock-Regular.ttfが英語フォントなので日本語フォントに変えること|ルビに使用するフォントリソースです。**DynamicFont** リソースを推奨します。<br>新しくフォントのリソースを作って設定するか（おすすめ）、 DefaultRubyFont の FontData を変更します。（おすすめしない）|
+|   |   |extra_spacing_charはプログラム内で自動に設定されるため、変更しても意味がないかもです。|
+|Ruby Alignment|Center|ルビを左寄せ、真ん中、右寄せ、Fillします。<br>Fillは使い物にならないかもです。（よくわかっていません）|
+|Ruby Offset|X:0 Y:0|ルビを指定したピクセルぶんずらします。<br>これで微調整してください。|
+4. 左部のサイドバーの **Timeline → 右クリック → Add Timeline** を実行してタイムラインを追加してみます。名前をひかえておきます。  
+（Themeエディタのプレビュー欄でもルビは表示されますが）
+5. テキストイベントを追加します。右部の Main Events から 💬Text をクリックします。<br>
+![image](https://user-images.githubusercontent.com/32963227/152315392-7176aa39-a7b7-4da5-9b80-6f851a9d316e.png)
+6. テキストを入力します。<br>
+![image](https://user-images.githubusercontent.com/32963227/152315472-4b6a26db-c8b6-4ae4-a177-489e469380db.png)
+例文
+```
+[r=ごどー@Godot][r=えんじん@Engine]のアドオン[r=ダイアロジック@Dialogic]でルビを[r=ふ@振]るよ。[br][r=ハードラック＠不運]と[r=ダンス@踊]っちまった。
+```
+書き方
+```
+[r=ルビふりがな@ルビをふる文字]
+```
+
+＠がルビと文字の区切りです。（そのため、＠をルビや文字に使うことはできません。）
+
+＠は全角、半角どちらでも可です。
+
+[r=]はすべて半角です。
+
+7. 適当にNode2Dでシーンを作成し、スクリプトを作成 → アタッチします。  
+スクリプトを書きます。Timelineの文字列は、先程作成したタイムラインの名前と同じにする必要があります。
+<br>
+
+![image](https://user-images.githubusercontent.com/32963227/152316501-039f46cc-cc0f-460a-af9c-8cf5ce7e6ed6.png)
+
+
+```gdscript
+extends Node2D
+
+func _ready():
+	var dia = Dialogic.start('timeline-1643877658')
+	self.add_child(dia)
+```
+
+8. シーンを保存してF6とかで実行します。
+![image](https://user-images.githubusercontent.com/32963227/152316989-5e220330-9fb5-4bf5-b808-338f1fa79540.png)
+
+---
+ライセンス
+MIT
+
+---
+
+参考にさせていただきました
+
+[Godot Engine上で振り仮名（ルビ）を実現する](https://www.clvs7.com/blog/2020/09/24/implementing-furigana-ruby-on-godot/)
+
+[https://gitlab.com/clvs7/godot-sample-project-furigana-ruby](https://gitlab.com/clvs7/godot-sample-project-furigana-ruby)
+
+---
+
+↓以下は Dialogic 
+
+---
+
 ![github-cover](https://user-images.githubusercontent.com/2206700/136808110-7caa2d2c-44c0-4d8e-a272-fd01b990c6ba.png)
 
 Create dialogs, characters and scenes to display conversations in your Godot games. 
@@ -6,9 +89,6 @@ Create dialogs, characters and scenes to display conversations in your Godot gam
 [Installation](#installation) — 
 [Documentation](https://github.com/coppolaemilio/dialogic/blob/main/addons/dialogic/Documentation/Content/Welcome.md) — 
 [Credits](#credits)
-
-
-
 
 
 # Version 1.4 - Work in progress 🛠️  ![Godot v3.4](https://img.shields.io/badge/godot-v3.4-%23478cbf)
