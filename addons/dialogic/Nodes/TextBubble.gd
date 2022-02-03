@@ -15,6 +15,11 @@ onready var text_container = $TextContainer
 onready var text_label = $TextContainer/RichTextLabel
 onready var name_label = $NameLabel
 onready var next_indicator = $NextIndicatorContainer/NextIndicator
+# ルビ
+var ruby_control:Control
+var ruby_template:Label
+var ruby_offset:Vector2 = Vector2.ZERO
+var num_of_ruby_chars_per_chars:Dictionary = {}
 
 var _finished := false
 var _theme
@@ -77,6 +82,8 @@ func update_text(text:String):
 	#keep this up to date whenever the regex string is updated! - KvaGram
 	
 	result = regex.search(text_bbcodefree)
+	
+	var ruby_char_counts = 0
 	#loops until all commands are cleared from the text
 	while result:
 		if result.get_string(1) == "nw" || result.get_string(2) == "nw":
@@ -84,14 +91,27 @@ func update_text(text:String):
 			pass
 		else:
 			#Store an assigned varible command as an array by 0 index in text, 1 command-name, 2 argument
-			commands.append([result.get_start()-1, result.get_string(2).strip_edges(), result.get_string(3).strip_edges()])
+			#commands.append([result.get_start()-1, result.get_string(2).strip_edges(), result.get_string(3).strip_edges()])
+			# ルビをふる漢字を表示文字に加えると文字分ずれるのでそのぶんずらす
+			commands.append([result.get_start()-1 + ruby_char_counts, result.get_string(2).strip_edges(), result.get_string(3).strip_edges()])
 		text_bbcodefree = text_bbcodefree.substr(0, result.get_start()) + text_bbcodefree.substr(result.get_end())
 		text = text.replace(result.get_string(), "")
 		
+		# insert ruby text ルビをふる漢字を表示文字に加える
+		if result.get_string(2) == "r":
+			# ルビをふる漢字を表示文字に加えると文字分ずれる
+			var replaced_text = result.get_string(3).replace("＠","@")
+			var ruby_text = replaced_text.split("@")[1]
+			text = text.insert(result.get_start() + ruby_char_counts,ruby_text)
+			ruby_char_counts = ruby_char_counts + ruby_text.length()
+			
 		result = regex.search(text_bbcodefree)
 
 	text_label.bbcode_text = text
 	text_label.visible_characters = 0
+	
+	# ルビLabelを作成する(非表示状態)
+	add_rubies()
 
 	## SIZING THE RICHTEXTLABEL
 	# The sizing is done in a very terrible way because the RichtTextLabel has 
@@ -141,10 +161,21 @@ func handle_command(command:Array):
 		get_parent().get_node("DialogicTimer").start(float(command[2]))
 		yield(get_parent().get_node("DialogicTimer"), "timeout")
 		start_text_timer()
-		
+	elif(command[1] == "r"):
+		if ruby_control.get_child_count() > 0:
+#			Nodeの上から順に非表示のものを表示にする
+			for ruby_label in ruby_control.get_children():
+				if ruby_label.visible == false:
+					ruby_label.visible = true
+					ruby_label.visible_characters = 0
+					break
 
 func skip():
 	text_label.visible_characters = -1
+	# ルビを全表示する
+	for ruby_label in ruby_control.get_children():
+		ruby_label.visible = true
+		ruby_label.visible_characters = -1
 	_handle_text_completed()
 
 
@@ -160,6 +191,20 @@ func load_theme(theme: ConfigFile):
 	text_label.set('custom_fonts/bold_font', DialogicUtil.path_fixer_load(theme.get_value('text', 'bold_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultBoldFont.tres')))
 	text_label.set('custom_fonts/italics_font', DialogicUtil.path_fixer_load(theme.get_value('text', 'italic_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultItalicFont.tres')))
 	name_label.set('custom_fonts/font', DialogicUtil.path_fixer_load(theme.get_value('name', 'font', 'res://addons/dialogic/Example Assets/Fonts/NameFont.tres')))
+	
+	print("load to template")
+	ruby_template.set('custom_fonts/font', DialogicUtil.path_fixer_load(theme.get_value('text', 'ruby_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultRubyFont.tres')))
+#	var ruby_alignment = theme.get_value('text', 'ruby_alignment',0)
+#	if ruby_alignment == 0: # top
+#		ruby_template.align = Label.ALIGN_LEFT
+#	elif ruby_alignment == 1: # center
+#		ruby_template.align = Label.ALIGN_CENTER
+#	elif ruby_alignment == 2: # bottom
+#		ruby_template.align = Label.ALIGN_RIGHT
+#	elif ruby_alignment == 3: # fill
+#		ruby_template.align = Label.ALIGN_FILL
+	ruby_template.align = theme.get_value('text', 'ruby_alignment',0)
+	ruby_offset = theme.get_value('text', 'ruby_offset', Vector2(2,2))
 	
 	# setting the vertical alignment
 	var alignment = theme.get_value('text', 'alignment',0)
@@ -269,6 +314,13 @@ func _on_writing_timer_timeout():
 	if get_parent().has_node('fade_in_tween_show_time') == false:
 		if _finished == false:
 			text_label.visible_characters += 1
+			
+			# ルビの表示を進める
+			for ruby_label in ruby_control.get_children():
+				if ruby_label.visible == true and ruby_label.visible_characters != -1:
+					ruby_label.visible_characters += num_of_ruby_chars_per_chars[ruby_label.name]
+					pass
+			
 			if(commands.size()>0 && commands[0][0] <= text_label.visible_characters):
 				handle_command(commands.pop_front()) #handles the command, and removes it from the queue
 			if text_label.visible_characters > text_label.get_total_character_count():
@@ -310,6 +362,105 @@ func align_name_label():
 	elif name_label_position == 2: # Right
 		name_label.rect_global_position.x = rect_global_position.x + rect_size.x - label_size + horizontal_offset
 
+var SPACING = 24
+var SPACING_EXTRA = 3
+
+func add_rubies():
+	var m_label: RichTextLabel = $TextContainer/RichTextLabel
+	var m_font: DynamicFont = m_label.get("custom_fonts/normal_font")
+	
+	for label in ruby_control.get_children():
+		ruby_control.remove_child(label)
+	
+	for command in commands:
+		if(command[1] == "r"):
+			var replaced_ruby = command[2].replace("＠","@")
+			var ruby_furigana = replaced_ruby.split("@")[0]
+			var ruby_text = replaced_ruby.split("@")[1]
+			var ruby = {"text":ruby_text,"furigana":ruby_furigana,"t_idx":command[0] + 1,"t_len":ruby_text.length()}
+			# ルビ用Labelを複製
+			var r_label: Label = ruby_template.duplicate()
+#			r_label.align = Label.ALIGN_CENTER
+#			r_label.valign = Label.VALIGN_CENTER
+#			var r_font: DynamicFont = $TextContainer/RichTextLabel/Label.get_font("font") #TODO
+			var r_font: Font = r_label.get_font("font")
+#			r_label.set("custom_fonts/font", r_font)
+			# ルビを指定
+			r_label.text = ruby.furigana
+			
+#			# ルビのLabelが最小となるように設定
+#			r_label.rect_size = Vector2(0,0)
+			ruby_control.add_child(r_label)
+			
+			# サイズ・テキスト類の取得
+			# ルビふりがな
+			var r_size: Vector2 = r_font.get_string_size(ruby.furigana)
+			print(r_size)
+			var r_len: int = r_label.text.length()
+			# ルビ対象テキスト
+			var t_size: Vector2 = m_font.get_string_size(ruby.text)
+			# テキスト全体
+			var m_text: String = m_label.text
+			var m_size: Vector2 = m_font.get_string_size(m_text)
+			var m_text_lines: Array = m_text.split("\n")
+			m_size.y += m_size.y * (m_text_lines.size() - 1)
+			var _li = 0
+			# ルビの存在する行
+			var m_text_line: String = m_text_lines[_li]
+			var _lidx: int = m_text_line.length()
+			if _lidx > 0:
+				while _lidx < ruby.t_idx:
+					_li += 1
+					m_text_line = m_text_lines[_li]
+					_lidx += m_text_line.length() + 1
+			var m_text_line_size: Vector2 = m_font.get_string_size(m_text_line)
+			# メッセージのうち、テキスト直前までのもの
+			var m_pre_text: String = m_text.substr(0, ruby.t_idx)
+			var m_pre_size: Vector2 = m_font.get_string_size(m_pre_text)
+			var m_pre_nl_count: int = m_pre_text.count("\n")
+			m_pre_size.y += m_pre_size.y * m_pre_nl_count
+			# メッセージのテキスト直前までのもののうち、改行以降のもの
+			var m_pre_after_nl_idx: int = m_pre_text.find_last("\n")
+			var m_pre_after_nl_size: Vector2 = m_font.get_string_size(m_pre_text.substr(m_pre_after_nl_idx + 1)) if m_pre_after_nl_idx >= 0 else m_pre_size
+
+			print(r_label.text)
+			print(String(r_label.rect_size.x) + " " + String(r_size.x) + " " + String(t_size.x))
+			# ルビ長が対象より短い場合、スペースを入れて埋める
+			if r_font is DynamicFont and r_size.x < t_size.x:
+				r_font = r_font.duplicate()
+				r_font.extra_spacing_char = int((t_size.x - r_size.x) / r_len)
+				r_label.set("custom_fonts/font", r_font)
+				r_size.x += (r_len - 1) * r_font.extra_spacing_char
+			print(String(r_label.rect_size.x) + " " + String(r_size.x) + " " + String(t_size.x))
+			# ラベルNodeの横幅をルビ対象テキストの横幅に合わせるが、
+			# スペースで埋めた結果ルビLabel横幅が対象より長くなる場合はその長さにする
+			if r_size.x > t_size.x:
+				r_label.rect_size.x = r_size.x
+			else:
+				r_label.rect_size.x = t_size.x
+			print(String(r_label.rect_size.x) + " " + String(r_size.x) + " " + String(t_size.x))
+			
+			# ルビラベルの大きさ、位置を決める	
+			var r_pos_x: float = int(m_pre_after_nl_size.x) % int(m_label.rect_size.x)
+			var r_pos_y: float = (m_text_line_size.y * m_pre_nl_count + SPACING - r_size.y + SPACING_EXTRA * m_pre_nl_count) - ((m_text_lines.size() - 1) * m_text_line_size.y)
+			
+			# 真ん中揃えかつルビLabel横幅が対象より長くなった場合はルビテキストの中央に合わせる
+			if r_label.align == Label.ALIGN_CENTER and r_size.x > t_size.x:
+				var zurasi_x = (r_size.x - t_size.x) / 2.0
+				r_pos_x = r_pos_x - zurasi_x
+			
+			var r_pos: Vector2 = Vector2(r_pos_x + ruby_offset.x, r_pos_y + ruby_offset.y - 60)
+			r_label.rect_position = r_pos
+			r_label.visible = false
+			
+			# ページ送り時の速度をルビとルビテキストで合わせるため、ルビテキスト1文字に対するルビの文字数を計算して格納する
+			var num_of_ruby_chars_per_char:int = ceil(float(ruby.furigana.length()) / float(ruby.text.length()))
+			num_of_ruby_chars_per_chars[r_label.name] = num_of_ruby_chars_per_char
+			pass
+	
+	
+
+
 ## *****************************************************************************
 ##								OVERRIDES
 ## *****************************************************************************
@@ -319,5 +470,17 @@ func _ready():
 	reset()
 	$WritingTimer.connect("timeout", self, "_on_writing_timer_timeout")
 	text_label.meta_underlined = false
-	regex.compile("\\[\\s*(nw|(nw|speed|signal|play|pause)\\s*=\\s*(.+?)\\s*)\\](.*?)")
+#	regex.compile("\\[\\s*(nw|(nw|speed|signal|play|pause)\\s*=\\s*(.+?)\\s*)\\](.*?)")
+	regex.compile("\\[\\s*(nw|(nw|speed|signal|play|pause|r)\\s*=\\s*(.+?)\\s*)\\](.*?)")
 	
+	# ルビ追加
+	ruby_control = Control.new()
+	ruby_control.name = "RubyControl"
+	$TextContainer.add_child(ruby_control)
+	ruby_control.rect_position = Vector2.ZERO
+	# ルビテンプレート追加
+	ruby_template = Label.new()
+	ruby_template.name = "RubyTemplateLabel"
+	$TextContainer.add_child(ruby_template)
+	ruby_template.visible = false
+	print("add template")

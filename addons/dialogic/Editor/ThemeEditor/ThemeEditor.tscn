@@ -7,7 +7,7 @@
 [ext_resource path="res://addons/dialogic/Editor/ThemeEditor/AudioPicker.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/dialogic/Editor/Common/TLabel.tscn" type="PackedScene" id=8]
 
-[sub_resource type="Image" id=11]
+[sub_resource type="Image" id=21]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -16,13 +16,13 @@ data = {
 "width": 16
 }
 
-[sub_resource type="ImageTexture" id=10]
+[sub_resource type="ImageTexture" id=20]
 flags = 4
 flags = 4
-image = SubResource( 11 )
+image = SubResource( 21 )
 size = Vector2( 16, 16 )
 
-[sub_resource type="Image" id=12]
+[sub_resource type="Image" id=22]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -31,10 +31,10 @@ data = {
 "width": 16
 }
 
-[sub_resource type="ImageTexture" id=8]
+[sub_resource type="ImageTexture" id=18]
 flags = 4
 flags = 4
-image = SubResource( 12 )
+image = SubResource( 22 )
 size = Vector2( 16, 16 )
 
 [node name="ThemeEditor" type="ScrollContainer"]
@@ -100,7 +100,6 @@ all_tabs_in_front = true
 drag_to_rearrange_enabled = true
 
 [node name="Dialog Text" type="HBoxContainer" parent="VBoxContainer/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -128,7 +127,7 @@ text_key = "Fonts"
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/TabContainer/Dialog Text/Column"]
 margin_top = 26.0
 margin_right = 270.0
-margin_bottom = 100.0
+margin_bottom = 180.0
 size_flags_horizontal = 3
 custom_constants/hseparation = 10
 columns = 2
@@ -137,90 +136,177 @@ columns = 2
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 4.0
-margin_right = 79.0
+margin_right = 101.0
 margin_bottom = 18.0
 text = "Regular Font"
 text_key = "Regular Font"
 
 [node name="RegularFont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
-margin_left = 89.0
-margin_right = 239.0
+margin_left = 111.0
+margin_right = 269.0
 margin_bottom = 22.0
 
 [node name="RegularFontButton" type="Button" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RegularFont"]
 margin_top = 1.0
-margin_right = 118.0
+margin_right = 126.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 text = "DefaultFont"
 
 [node name="RegularFontOpen" type="Button" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RegularFont"]
-margin_left = 122.0
-margin_right = 150.0
+margin_left = 130.0
+margin_right = 158.0
 margin_bottom = 22.0
 size_flags_vertical = 4
-icon = SubResource( 10 )
+icon = SubResource( 20 )
 
 [node name="TLabel2" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 30.0
-margin_right = 79.0
+margin_right = 101.0
 margin_bottom = 44.0
 text = "Bold Font"
 text_key = "Bold Font"
 
 [node name="BoldFont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
-margin_left = 89.0
+margin_left = 111.0
 margin_top = 26.0
-margin_right = 239.0
+margin_right = 269.0
 margin_bottom = 48.0
 
 [node name="BoldFontButton" type="Button" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/BoldFont"]
 margin_top = 1.0
-margin_right = 118.0
+margin_right = 126.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 text = "DefaultBoldFont"
 
 [node name="BoldFontOpen" type="Button" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/BoldFont"]
-margin_left = 122.0
-margin_right = 150.0
+margin_left = 130.0
+margin_right = 158.0
 margin_bottom = 22.0
 size_flags_vertical = 4
-icon = SubResource( 10 )
+icon = SubResource( 20 )
 
 [node name="TLabel3" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 56.0
-margin_right = 79.0
+margin_right = 101.0
 margin_bottom = 70.0
 text = "Italic Font"
 text_key = "Italic Font"
 
 [node name="ItalicFont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
-margin_left = 89.0
+margin_left = 111.0
 margin_top = 52.0
-margin_right = 239.0
+margin_right = 269.0
 margin_bottom = 74.0
 
 [node name="ItalicFontButton" type="Button" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/ItalicFont"]
 margin_top = 1.0
-margin_right = 118.0
+margin_right = 126.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 text = "DefaultItalicFont"
 
 [node name="ItalicFontOpen" type="Button" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/ItalicFont"]
-margin_left = 122.0
-margin_right = 150.0
+margin_left = 130.0
+margin_right = 158.0
 margin_bottom = 22.0
 size_flags_vertical = 4
-icon = SubResource( 10 )
+icon = SubResource( 20 )
+
+[node name="TLabel4" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 82.0
+margin_right = 101.0
+margin_bottom = 96.0
+text = "Ruby Font"
+text_key = "Ruby Font"
+
+[node name="RubyFont" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
+margin_left = 111.0
+margin_top = 78.0
+margin_right = 269.0
+margin_bottom = 100.0
+
+[node name="RubyFontButton" type="Button" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyFont"]
+margin_top = 1.0
+margin_right = 126.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "DefaultRubyFont"
+
+[node name="RubyFontOpen" type="Button" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyFont"]
+margin_left = 130.0
+margin_right = 158.0
+margin_bottom = 22.0
+size_flags_vertical = 4
+icon = SubResource( 20 )
+
+[node name="TLabel6" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 108.0
+margin_right = 101.0
+margin_bottom = 122.0
+text = "Ruby Alignment"
+text_key = "Ruby Alignment"
+
+[node name="RubyAlignment" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
+margin_left = 111.0
+margin_top = 104.0
+margin_right = 269.0
+margin_bottom = 126.0
+
+[node name="Alignment" type="OptionButton" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyAlignment"]
+margin_right = 158.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+text = "Left"
+icon = SubResource( 18 )
+items = [ "Left", SubResource( 20 ), false, 0, null, "Center", SubResource( 20 ), false, 1, null, "Right", SubResource( 20 ), false, 2, null, "Fill", SubResource( 20 ), false, 3, null ]
+selected = 0
+
+[node name="TLabel5" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 135.0
+margin_right = 101.0
+margin_bottom = 149.0
+text = "Ruby Offset"
+text_key = "Ruby Offset"
+
+[node name="RubyOffset" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
+margin_left = 111.0
+margin_top = 130.0
+margin_right = 269.0
+margin_bottom = 154.0
+custom_constants/separation = 10
+
+[node name="Ruby OffsetX" type="SpinBox" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyOffset"]
+margin_right = 74.0
+margin_bottom = 24.0
+value = 2.0
+rounded = true
+allow_lesser = true
+prefix = "X"
+
+[node name="Ruby OffsetY" type="SpinBox" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyOffset"]
+margin_left = 84.0
+margin_right = 158.0
+margin_bottom = 24.0
+value = 2.0
+rounded = true
+allow_lesser = true
+prefix = "Y"
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/TabContainer/Dialog Text"]
 margin_left = 280.0
@@ -390,8 +476,8 @@ margin_right = 98.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 text = "Top Left"
-icon = SubResource( 8 )
-items = [ "Top Left", SubResource( 10 ), false, 0, null, "Top Center", SubResource( 10 ), false, 1, null, "Top Right", SubResource( 10 ), false, 2, null, "", null, false, -1, null, "Center Left", SubResource( 10 ), false, 3, null, "Center", SubResource( 10 ), false, 4, null, "Center Right", SubResource( 10 ), false, 5, null, "", null, false, -1, null, "Bottom Left", SubResource( 10 ), false, 6, null, "Bottom Center", SubResource( 10 ), false, 7, null, "Bottom Right", SubResource( 10 ), false, 8, null ]
+icon = SubResource( 18 )
+items = [ "Top Left", SubResource( 20 ), false, 0, null, "Top Center", SubResource( 20 ), false, 1, null, "Top Right", SubResource( 20 ), false, 2, null, "", null, false, -1, null, "Center Left", SubResource( 20 ), false, 3, null, "Center", SubResource( 20 ), false, 4, null, "Center Right", SubResource( 20 ), false, 5, null, "", null, false, -1, null, "Bottom Left", SubResource( 20 ), false, 6, null, "Bottom Center", SubResource( 20 ), false, 7, null, "Bottom Right", SubResource( 20 ), false, 8, null ]
 selected = 0
 
 [node name="TLabel3" parent="VBoxContainer/TabContainer/Dialog Text/Column3/GridContainer" instance=ExtResource( 8 )]
@@ -425,6 +511,7 @@ margin_right = 285.0
 margin_bottom = 106.0
 
 [node name="Dialog Box" type="HBoxContainer" parent="VBoxContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -612,8 +699,8 @@ margin_top = 56.0
 margin_right = 266.0
 margin_bottom = 78.0
 text = "Top Left"
-icon = SubResource( 8 )
-items = [ "Top Left", SubResource( 10 ), false, 0, null, "Top Center", SubResource( 10 ), false, 1, null, "Top Right", SubResource( 10 ), false, 2, null, "", null, false, -1, null, "Center Left", SubResource( 10 ), false, 3, null, "Center", SubResource( 10 ), false, 4, null, "Center Right", SubResource( 10 ), false, 5, null, "", null, false, -1, null, "Bottom Left", SubResource( 10 ), false, 6, null, "Bottom Center", SubResource( 10 ), false, 7, null, "Bottom Right", SubResource( 10 ), false, 8, null ]
+icon = SubResource( 18 )
+items = [ "Top Left", SubResource( 20 ), false, 0, null, "Top Center", SubResource( 20 ), false, 1, null, "Top Right", SubResource( 20 ), false, 2, null, "", null, false, -1, null, "Center Left", SubResource( 20 ), false, 3, null, "Center", SubResource( 20 ), false, 4, null, "Center Right", SubResource( 20 ), false, 5, null, "", null, false, -1, null, "Bottom Left", SubResource( 20 ), false, 6, null, "Bottom Center", SubResource( 20 ), false, 7, null, "Bottom Right", SubResource( 20 ), false, 8, null ]
 selected = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -986,7 +1073,7 @@ margin_left = 130.0
 margin_right = 158.0
 margin_bottom = 22.0
 size_flags_vertical = 4
-icon = SubResource( 10 )
+icon = SubResource( 20 )
 
 [node name="TLabel2" parent="VBoxContainer/TabContainer/Name Label/Column/VBoxContainer2/GridContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
@@ -1489,8 +1576,8 @@ margin_right = 309.0
 margin_bottom = 130.0
 size_flags_horizontal = 3
 text = "Top Left"
-icon = SubResource( 8 )
-items = [ "Top Left", SubResource( 10 ), false, 0, null, "Top Center", SubResource( 10 ), false, 1, null, "Top Right", SubResource( 10 ), false, 2, null, "", null, false, -1, null, "Center Left", SubResource( 10 ), false, 3, null, "Center", SubResource( 10 ), false, 4, null, "Center Right", SubResource( 10 ), false, 5, null, "", null, false, -1, null, "Bottom Left", SubResource( 10 ), false, 6, null, "Bottom Center", SubResource( 10 ), false, 7, null, "Bottom Right", SubResource( 10 ), false, 8, null ]
+icon = SubResource( 18 )
+items = [ "Top Left", SubResource( 20 ), false, 0, null, "Top Center", SubResource( 20 ), false, 1, null, "Top Right", SubResource( 20 ), false, 2, null, "", null, false, -1, null, "Center Left", SubResource( 20 ), false, 3, null, "Center", SubResource( 20 ), false, 4, null, "Center Right", SubResource( 20 ), false, 5, null, "", null, false, -1, null, "Bottom Left", SubResource( 20 ), false, 6, null, "Bottom Center", SubResource( 20 ), false, 7, null, "Bottom Right", SubResource( 20 ), false, 8, null ]
 selected = 0
 
 [node name="TLabel6" parent="VBoxContainer/TabContainer/Choice Buttons/Column2/GridContainer" instance=ExtResource( 8 )]
@@ -1594,7 +1681,7 @@ margin_left = 90.0
 margin_right = 118.0
 margin_bottom = 22.0
 size_flags_vertical = 4
-icon = SubResource( 10 )
+icon = SubResource( 20 )
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/TabContainer/Glossary"]
 margin_left = 280.0
@@ -1646,7 +1733,7 @@ margin_left = 90.0
 margin_right = 118.0
 margin_bottom = 22.0
 size_flags_vertical = 4
-icon = SubResource( 10 )
+icon = SubResource( 20 )
 
 [node name="TLabel2" parent="VBoxContainer/TabContainer/Glossary/Column3/GridContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
@@ -1693,7 +1780,7 @@ margin_left = 90.0
 margin_right = 118.0
 margin_bottom = 22.0
 size_flags_vertical = 4
-icon = SubResource( 10 )
+icon = SubResource( 20 )
 
 [node name="TLabel4" parent="VBoxContainer/TabContainer/Glossary/Column3/GridContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
@@ -1740,7 +1827,7 @@ margin_left = 90.0
 margin_right = 118.0
 margin_bottom = 22.0
 size_flags_vertical = 4
-icon = SubResource( 10 )
+icon = SubResource( 20 )
 
 [node name="TLabel6" parent="VBoxContainer/TabContainer/Glossary/Column3/GridContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
@@ -1937,6 +2024,10 @@ one_shot = true
 [connection signal="pressed" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/BoldFont/BoldFontOpen" to="." method="_on_BoldFontOpen_pressed"]
 [connection signal="pressed" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/ItalicFont/ItalicFontButton" to="." method="_on_ItalicFontButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/ItalicFont/ItalicFontOpen" to="." method="_on_ItalicFontOpen_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyFont/RubyFontButton" to="." method="_on_RubyFontButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyFont/RubyFontOpen" to="." method="_on_RubyFontOpen_pressed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyOffset/Ruby OffsetX" to="." method="_on_RubyOffset_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyOffset/Ruby OffsetY" to="." method="_on_RubyOffset_value_changed"]
 [connection signal="color_changed" from="VBoxContainer/TabContainer/Dialog Text/Column2/GridContainer/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]
 [connection signal="color_changed" from="VBoxContainer/TabContainer/Dialog Text/Column2/GridContainer/HBoxContainer2/ColorPickerButtonShadow" to="." method="_on_ColorPickerButtonShadow_color_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Text/Column2/GridContainer/HBoxContainer/ShadowOffsetX" to="." method="_on_ShadowOffset_value_changed"]

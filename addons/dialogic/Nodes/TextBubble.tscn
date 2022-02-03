@@ -44,9 +44,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="StyleBoxFlat" id=6]
-content_margin_left = 20.0
-content_margin_right = 20.0
-content_margin_bottom = -170.0
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
 bg_color = Color( 1, 1, 1, 0 )
 expand_margin_left = 10.0
 
@@ -86,10 +87,6 @@ __meta__ = {
 [node name="TextContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 12.0
-margin_right = -10.0
-margin_bottom = -12.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -99,8 +96,8 @@ __meta__ = {
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TextContainer"]
 margin_top = 11.0
-margin_right = 890.0
-margin_bottom = 125.0
+margin_right = 910.0
+margin_bottom = 146.0
 focus_mode = 2
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 0 )

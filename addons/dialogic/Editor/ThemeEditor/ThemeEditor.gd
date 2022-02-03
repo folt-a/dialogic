@@ -50,6 +50,12 @@ onready var n : Dictionary = {
 	'single_portrait_mode': $"VBoxContainer/TabContainer/Dialog Text/Column3/GridContainer/SinglePortraitModeCheckBox",
 	'dont_close_after_last_event': $"VBoxContainer/TabContainer/Dialog Text/Column3/GridContainer/DontCloseAfterLastEventCheckBox",
 	
+	# Ruby
+	'theme_font_ruby':$"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyFont/RubyFontButton",
+	'theme_ruby_offset_x': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyOffset/Ruby OffsetX",
+	'theme_ruby_offset_y': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyOffset/Ruby OffsetY",
+	'ruby_alignment': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyAlignment/Alignment",
+	
 	# Dialog box
 	'background_texture_button_visible': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer3/CheckBox",
 	'theme_background_image': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer3/BackgroundTextureButton",
@@ -178,6 +184,9 @@ func _ready() -> void:
 	$"VBoxContainer/TabContainer/Glossary/Column3/GridContainer/ExtraFont/ExtraFontOpen".icon = get_icon("Edit", "EditorIcons")
 	$"VBoxContainer/TabContainer/Glossary/Column/GridContainer/BackgroundPanel/BGPanelOpen".icon = get_icon("Edit", "EditorIcons")
 	
+	# Ruby
+	$"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyFont/RubyFontOpen".icon = get_icon("Edit", "EditorIcons")
+	
 	n['text_preview'].syntax_highlighting = true
 	n['text_preview'].add_color_region('[', ']', get_color("axis_z_color", "Editor"))
 	
@@ -250,6 +259,19 @@ func _ready() -> void:
 	n['button_position_on_screen'].connect('item_selected', self, '_on_button_anchor_selected')
 	n['dialog_box_anchor'].connect('item_selected', self, '_on_button_dialogbox_anchor_selected')
 	n['alignment'].connect('item_selected', self, '_on_Alignment_item_selected')
+	
+	# ruby align
+	var button_positions_popup = n['ruby_alignment'].get_popup()
+	button_positions_popup.clear()
+	button_positions_popup.add_icon_item(
+		get_icon("", "EditorIcons"), "Left", 0)
+	button_positions_popup.add_icon_item(
+		get_icon("", "EditorIcons"), "Center", 1)
+	button_positions_popup.add_icon_item(
+		get_icon("", "EditorIcons"), "Right", 2)
+	button_positions_popup.add_icon_item(
+		get_icon("", "EditorIcons"), "Fill", 3)
+	n['ruby_alignment'].connect('item_selected', self, '_on_Ruby_Alignment_item_selected')
 	
 	n['button_offset_x'].connect('value_changed', self, '_on_button_offset_changed')
 	n['button_offset_y'].connect('value_changed', self, '_on_button_offset_changed')
@@ -388,6 +410,12 @@ func load_theme(filename):
 	n['theme_font'].text = DialogicResources.get_filename_from_path(theme.get_value('text', 'font', 'res://addons/dialogic/Example Assets/Fonts/DefaultFont.tres'))
 	n['theme_font_bold'].text = DialogicResources.get_filename_from_path(theme.get_value('text', 'bold_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultBoldFont.tres'))
 	n['theme_font_italic'].text = DialogicResources.get_filename_from_path(theme.get_value('text', 'italic_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultItalicFont.tres'))
+	#Ruby
+	n['theme_font_ruby'].text = DialogicResources.get_filename_from_path(theme.get_value('text', 'ruby_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultRubyFont.tres'))
+	n['ruby_alignment'].select(n['ruby_alignment'].get_item_index(theme.get_value('text', 'ruby_alignment', 0)))
+	n['theme_ruby_offset_x'].value = theme.get_value('text', 'ruby_offset', Vector2(2,2)).x
+	n['theme_ruby_offset_y'].value = theme.get_value('text', 'ruby_offset', Vector2(2,2)).y
+	
 	n['theme_text_color'].color = Color(theme.get_value('text', 'color', '#ffffffff'))
 	n['theme_text_shadow'].pressed = theme.get_value('text', 'shadow', false)
 	n['theme_text_shadow_color'].color = Color(theme.get_value('text', 'shadow_color', '#9e000000'))
@@ -639,6 +667,33 @@ func _on_ItalicFontOpen_pressed():
 	var theme = DialogicResources.get_theme_config(current_theme)
 	editor_reference.editor_interface.inspect_object(load(theme.get_value('text', 'italic_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultItalicFont.tres')))
 
+func _on_RubyFontButton_pressed():
+	editor_reference.godot_dialog("*.tres")
+	editor_reference.godot_dialog_connect(self, "_on_RubyFont_selected")
+
+
+func _on_RubyFont_selected(path, target) -> void:
+	if loading:
+		return
+	DialogicResources.set_theme_value(current_theme, 'text', 'ruby_font', path)
+	n['theme_font_ruby'].text = DialogicResources.get_filename_from_path(path)
+	_on_PreviewButton_pressed() # Refreshing the preview
+
+func _on_RubyFontOpen_pressed():
+	var theme = DialogicResources.get_theme_config(current_theme)
+	editor_reference.editor_interface.inspect_object(load(theme.get_value('text', 'ruby_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultRubyFont.tres')))
+
+func _on_Ruby_Alignment_item_selected(index) -> void:
+	if loading:
+		return
+	DialogicResources.set_theme_value(current_theme, 'text', 'ruby_alignment', n['ruby_alignment'].get_item_id(index))
+	_on_PreviewButton_pressed() # Refreshing the preview
+
+func _on_RubyOffset_value_changed(_value) -> void:
+	if loading:
+		return
+	DialogicResources.set_theme_value(current_theme, 'text','ruby_offset', Vector2(n['theme_ruby_offset_x'].value,n['theme_ruby_offset_y'].value))
+	_on_PreviewButton_pressed() # Refreshing the preview
 
 func _on_NameFont_pressed():
 	editor_reference.godot_dialog("*.tres")
