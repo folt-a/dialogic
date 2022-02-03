@@ -413,8 +413,8 @@ func load_theme(filename):
 	#Ruby
 	n['theme_font_ruby'].text = DialogicResources.get_filename_from_path(theme.get_value('text', 'ruby_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultRubyFont.tres'))
 	n['ruby_alignment'].select(n['ruby_alignment'].get_item_index(theme.get_value('text', 'ruby_alignment', 0)))
-	n['theme_ruby_offset_x'].value = theme.get_value('text', 'ruby_offset', Vector2(2,2)).x
-	n['theme_ruby_offset_y'].value = theme.get_value('text', 'ruby_offset', Vector2(2,2)).y
+	n['theme_ruby_offset_x'].value = theme.get_value('text', 'ruby_offset', Vector2(0,0)).x
+	n['theme_ruby_offset_y'].value = theme.get_value('text', 'ruby_offset', Vector2(0,0)).y
 	
 	n['theme_text_color'].color = Color(theme.get_value('text', 'color', '#ffffffff'))
 	n['theme_text_shadow'].pressed = theme.get_value('text', 'shadow', false)
