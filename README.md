@@ -77,7 +77,7 @@ MIT
 
 ---
 
-↓以下は Dialogic 
+↓以下は Dialogic 本リポジトリのReadMe
 
 ---
 
