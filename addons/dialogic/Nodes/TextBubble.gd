@@ -395,7 +395,7 @@ func add_rubies():
 			# サイズ・テキスト類の取得
 			# ルビふりがな
 			var r_size: Vector2 = r_font.get_string_size(ruby.furigana)
-			print(r_size)
+			# print(r_size)
 			var r_len: int = r_label.text.length()
 			# ルビ対象テキスト
 			var t_size: Vector2 = m_font.get_string_size(ruby.text)
@@ -423,22 +423,22 @@ func add_rubies():
 			var m_pre_after_nl_idx: int = m_pre_text.find_last("\n")
 			var m_pre_after_nl_size: Vector2 = m_font.get_string_size(m_pre_text.substr(m_pre_after_nl_idx + 1)) if m_pre_after_nl_idx >= 0 else m_pre_size
 
-			print(r_label.text)
-			print(String(r_label.rect_size.x) + " " + String(r_size.x) + " " + String(t_size.x))
+			# print(r_label.text)
+			# print(String(r_label.rect_size.x) + " " + String(r_size.x) + " " + String(t_size.x))
 			# ルビ長が対象より短い場合、スペースを入れて埋める
 			if r_font is DynamicFont and r_size.x < t_size.x:
 				r_font = r_font.duplicate()
 				r_font.extra_spacing_char = int((t_size.x - r_size.x) / r_len)
 				r_label.set("custom_fonts/font", r_font)
 				r_size.x += (r_len - 1) * r_font.extra_spacing_char
-			print(String(r_label.rect_size.x) + " " + String(r_size.x) + " " + String(t_size.x))
+			# print(String(r_label.rect_size.x) + " " + String(r_size.x) + " " + String(t_size.x))
 			# ラベルNodeの横幅をルビ対象テキストの横幅に合わせるが、
 			# スペースで埋めた結果ルビLabel横幅が対象より長くなる場合はその長さにする
 			if r_size.x > t_size.x:
 				r_label.rect_size.x = r_size.x
 			else:
 				r_label.rect_size.x = t_size.x
-			print(String(r_label.rect_size.x) + " " + String(r_size.x) + " " + String(t_size.x))
+			# print(String(r_label.rect_size.x) + " " + String(r_size.x) + " " + String(t_size.x))
 			
 			# ルビラベルの大きさ、位置を決める	
 			var r_pos_x: float = int(m_pre_after_nl_size.x) % int(m_label.rect_size.x)
