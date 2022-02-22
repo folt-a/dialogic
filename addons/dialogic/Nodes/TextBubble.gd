@@ -218,6 +218,9 @@ func load_theme(theme: ConfigFile):
 	var text_color = Color(theme.get_value('text', 'color', '#ffffffff'))
 	text_label.set('custom_colors/default_color', text_color)
 	name_label.set('custom_colors/font_color', text_color)
+	
+	var ruby_color = Color(theme.get_value('text', 'ruby_color', '#ffffffff'))
+	ruby_template.set('custom_colors/font_color', ruby_color)
 
 	text_label.set('custom_colors/font_color_shadow', Color('#00ffffff'))
 	name_label.set('custom_colors/font_color_shadow', Color('#00ffffff'))
@@ -483,4 +486,3 @@ func _ready():
 	ruby_template.name = "RubyTemplateLabel"
 	$TextContainer.add_child(ruby_template)
 	ruby_template.visible = false
-	print("add template")

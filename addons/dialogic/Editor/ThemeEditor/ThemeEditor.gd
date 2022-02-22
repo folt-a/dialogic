@@ -55,6 +55,7 @@ onready var n : Dictionary = {
 	'theme_ruby_offset_x': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyOffset/Ruby OffsetX",
 	'theme_ruby_offset_y': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyOffset/Ruby OffsetY",
 	'ruby_alignment': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/RubyAlignment/Alignment",
+	'theme_text_ruby_color': $"VBoxContainer/TabContainer/Dialog Text/Column2/GridContainer/ColorPickerButtonRuby",
 	
 	# Dialog box
 	'background_texture_button_visible': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer3/CheckBox",
@@ -415,6 +416,7 @@ func load_theme(filename):
 	n['ruby_alignment'].select(n['ruby_alignment'].get_item_index(theme.get_value('text', 'ruby_alignment', 0)))
 	n['theme_ruby_offset_x'].value = theme.get_value('text', 'ruby_offset', Vector2(0,0)).x
 	n['theme_ruby_offset_y'].value = theme.get_value('text', 'ruby_offset', Vector2(0,0)).y
+	n['theme_text_ruby_color'].color = Color(theme.get_value('text', 'ruby_color', '#ffffffff'))
 	
 	n['theme_text_color'].color = Color(theme.get_value('text', 'color', '#ffffffff'))
 	n['theme_text_shadow'].pressed = theme.get_value('text', 'shadow', false)
@@ -740,6 +742,12 @@ func _on_ShadowOffset_value_changed(_value) -> void:
 	DialogicResources.set_theme_value(current_theme, 'text','shadow_offset', Vector2(n['theme_shadow_offset_x'].value,n['theme_shadow_offset_y'].value))
 	_on_PreviewButton_pressed() # Refreshing the preview
 
+func _on_ColorPickerButtonRuby_color_changed(color):
+	if loading:
+		return
+	DialogicResources.set_theme_value(current_theme, 'text','ruby_color', '#' + color.to_html())
+	$DelayPreviewTimer.start(0.5) # Calling a timer so the update doesn't get triggered many times
+	pass # Replace with function body.
 
 ## ------------ 		DIALOG BOX TAB	 	------------------------------------
 
@@ -1131,5 +1139,3 @@ func _on_Glossary_BackgroundPanel_selected(path, target):
 func _on_audio_data_updated(section):
 	DialogicResources.set_theme_value(current_theme, 'audio', section, n['audio_pickers'][section].get_data())
 	_on_PreviewButton_pressed()
-
-
