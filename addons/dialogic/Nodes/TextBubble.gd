@@ -158,9 +158,12 @@ func handle_command(command:Array):
 			$sounds.play()
 	elif(command[1] == "pause"):
 		$WritingTimer.stop()
+		var x = text_label.visible_characters
 		get_parent().get_node("DialogicTimer").start(float(command[2]))
 		yield(get_parent().get_node("DialogicTimer"), "timeout")
-		start_text_timer()
+		# only continue, if no skip was performed
+		if text_label.visible_characters == x: 
+			start_text_timer()
 	elif(command[1] == "r"):
 		if ruby_control.get_child_count() > 0:
 #			Nodeの上から順に非表示のものを表示にする
