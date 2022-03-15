@@ -2,8 +2,6 @@
 
 このリポジトリは、Godotの高機能会話ウィンドウアドオン [**Dialogic**](https://github.com/coppolaemilio/dialogic/)をフォークし、ルビ機能を追加したものです。
 
-**注意：現在の Dialogic は1.4 Dev版です。1.4リリースまでは定期的にDialogic本リポジトリからPullして確認します。**
-
 ## 事前準備
 
 DialogicとGodotの初期フォントは日本語が含まれていないため、日本語が表示できません。日本語フォントを別途用意してください。<br>
@@ -16,6 +14,7 @@ DialogicとGodotの初期フォントは日本語が含まれていないため�
 ![image](https://user-images.githubusercontent.com/32963227/152312398-48a0e347-d33f-4db1-b04b-60c854aa2160.png)
 3. 左部のサイドバーの **Theme → Default Theme** を選択します。  
 **Dialog Text** タブの最左列に、**Ruby Font, Ruby Alignment, Ruby Offset** が追加されています。
+**Dialog Text** タブの最左列に、**Ruby Font, Ruby Alignment, Ruby Offset** が追加されています。
 ![image](https://user-images.githubusercontent.com/32963227/152312824-65ce8e5c-5381-41ef-ab12-144c965c8a1b.png)
 
 |   |初期値|説明|
@@ -24,6 +23,7 @@ DialogicとGodotの初期フォントは日本語が含まれていないため�
 |   |   |extra_spacing_charはプログラム内で自動に設定されるため、変更しても意味がないかもです。|
 |Ruby Alignment|Center|ルビを左寄せ、真ん中、右寄せ、Fillします。<br>Fillは使い物にならないかもです。（よくわかっていません）|
 |Ruby Offset|X:0 Y:0|ルビを指定したピクセルぶんずらします。<br>これで微調整してください。|
+|Ruby Color||ルビの色|
 4. 左部のサイドバーの **Timeline → 右クリック → Add Timeline** を実行してタイムラインを追加してみます。名前をひかえておきます。  
 （Themeエディタのプレビュー欄でもルビは表示されますが）
 5. テキストイベントを追加します。右部の Main Events から 💬Text をクリックします。<br>
