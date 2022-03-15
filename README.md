@@ -13,9 +13,8 @@ DialogicとGodotの初期フォントは日本語が含まれていないため�
 2. 上部に **Dialogic** タブが追加されています。開きます。  
 ![image](https://user-images.githubusercontent.com/32963227/152312398-48a0e347-d33f-4db1-b04b-60c854aa2160.png)
 3. 左部のサイドバーの **Theme → Default Theme** を選択します。  
-**Dialog Text** タブの最左列に、**Ruby Font, Ruby Alignment, Ruby Offset** が追加されています。
-**Dialog Text** タブの最左列に、**Ruby Font, Ruby Alignment, Ruby Offset** が追加されています。
-![image](https://user-images.githubusercontent.com/32963227/152312824-65ce8e5c-5381-41ef-ab12-144c965c8a1b.png)
+**Dialog Text** タブの**Fonts**列に、**Ruby Font, Ruby Alignment, Ruby Offset** 、**Colors**列に **Ruby Color** が追加されています。
+![image](https://user-images.githubusercontent.com/32963227/158387168-a13492bf-6415-4fe1-b858-a034c3181461.png)
 
 |   |初期値|説明|
 |---|---|---|
