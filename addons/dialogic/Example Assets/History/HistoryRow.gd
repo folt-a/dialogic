@@ -38,7 +38,7 @@ func _ready():
 	# ルビ追加
 	ruby_control = Control.new()
 	ruby_control.name = "RubyControl"
-	add_child(ruby_control)
+	TextContainer.add_child(ruby_control)
 	ruby_control.rect_position = Vector2.ZERO
 	# ルビテンプレート追加
 	ruby_template = Label.new()
