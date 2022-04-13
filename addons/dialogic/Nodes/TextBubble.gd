@@ -199,6 +199,7 @@ func load_theme(theme: ConfigFile):
 	text_label.set('custom_fonts/italics_font', DialogicUtil.path_fixer_load(theme.get_value('text', 'italic_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultItalicFont.tres')))
 	name_label.set('custom_fonts/font', DialogicUtil.path_fixer_load(theme.get_value('name', 'font', 'res://addons/dialogic/Example Assets/Fonts/NameFont.tres')))
 	
+	#Ruby
 	print("load to template")
 	ruby_template.set('custom_fonts/font', DialogicUtil.path_fixer_load(theme.get_value('text', 'ruby_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultRubyFont.tres')))
 #	var ruby_alignment = theme.get_value('text', 'ruby_alignment',0)
