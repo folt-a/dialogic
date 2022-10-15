@@ -68,7 +68,7 @@ func add_history(historyString, newAudio=''):
 		result = regex.search(historyString)
 		
 	TextLabel.bbcode_text = historyString.replace('[br]', '\n')
-	add_rubies()
+#	add_rubies()
 	
 	audioPath = newAudio
 	if newAudio != '':
